@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    div 
+        table 
+            thead
+                tr: th Name 
+                    th Email
+                    th SSN
+                    th Count
+            tbody 
+                each row in list
+                    tr
+                        td= row['name']
+                        td= row['email']
+                        td= row['ssn']
+                        td= row['count']
+    a(href="/admin/csv") Download csv

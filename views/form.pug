@@ -1,4 +1,22 @@
 extends layout
 
 block content
-  p Form!
+  if errormessages
+    each error in errormessages
+      p(class='error')= error
+  div(class = 'form-container')
+    form(method='POST' action='/post')
+      div.form
+        label(for='name') Nafn:
+        input(type='text', placeholder="Name", name='name',required='true',value=details.name)
+      div.form
+        label(for='email') Tölvupóstur:
+        input(type='email', placeholder='name@email.com', name='email', required='true',value=details.email) 
+      div.form
+        label(for='ssn') Kennitala:
+        input(type='text', placeholder='112233-4455', name='ssn',required='true',value=details.ssn)
+      div.form
+        label(for='count') Fjöldi:
+        input(type='number' name='count', required='true',value=details.count)
+
+      button(type='submit') Senda
