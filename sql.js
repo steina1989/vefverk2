@@ -1,7 +1,7 @@
   const { Client } = require('pg');
   const xss = require('xss');  // eslint-disable-line
 
-  const connectionString = 'postgres://postgres:123@localhost/postgres';
+  const connectionString = process.env.DATABASE_URL || 'postgres://postgres:123@localhost/postgres';
 
   async function insert(values) {
     const client = new Client({ connectionString });
