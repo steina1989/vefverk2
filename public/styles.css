@@ -12,13 +12,17 @@ html {
 *::after {
   box-sizing: inherit;
 }
+h1 {
+  padding-top: 30px;
+  text-align: center;
+}
 
 body {
   font-family: Georgia, serif;
   font-size: 16px;
   background-color: #eee;
   color: #333;
-
+  padding : 30px;
 }
 .form-container{
   text-align: center;
@@ -28,12 +32,12 @@ body {
 
 form {
   width : 50%;
-  padding-top : 10%;  
+  padding-top : 10px;  
   text-align: left;
   display : inline-block;
 }
 
-input[type=text], input[type=number], input[type=email], input[type=number]  {
+input[type=text], input[type=number],input[type=password], input[type=email], input[type=number]  {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -61,6 +65,7 @@ button:hover {
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 30px;
 }
 
 th, td {
@@ -69,6 +74,39 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
+
+/* navigation */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #666
+}
+
+li {
+  float: right;
+}
+
+li.text {
+  float : left;
+}
+
+li a,p {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.error {
+  color: darkred;
+}
+
+li a:hover {
+  background-color: #111;
+}
 
 @media screen and (max-width: 300px) {
 

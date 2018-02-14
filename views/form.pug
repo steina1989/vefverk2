@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  if errormessages
-    each error in errormessages
-      p(class='error')= error
   div(class = 'form-container')
+    if errormessages
+      each error in errormessages
+        p(class='error')= error
     form(method='POST' action='/post')
       div.form
         label(for='name') Nafn:
@@ -20,3 +20,4 @@ block content
         input(type='number' name='count', required='true',value=details.count)
 
       button(type='submit') Senda
+

@@ -2,8 +2,21 @@ doctype
 html(lang="is")
   head
     meta(charset="utf-8")
-    link(rel="stylesheet" href="styles.css")
+    link(rel="stylesheet" href="/styles.css")
     title=title
 
   body
+    ul
+      if user
+        li
+          a(href='logout') Útskráning
+        li
+          a(href='admin') Stjórnsíða
+        li 
+          a(href='/') Heim
+        li.text
+          p Skráð inn sem #{user.name}
+      else
+        li
+          a(href="/login") Log in
     block content

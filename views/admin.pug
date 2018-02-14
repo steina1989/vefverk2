@@ -2,6 +2,8 @@ extends layout
 
 block content
     div 
+        a(href="/admin/csv") Download csv
+
         table 
             thead
                 tr: th Name 
@@ -15,4 +17,4 @@ block content
                         td= row['email']
                         td= row['ssn']
                         td= row['count']
-    a(href="/admin/csv") Download csv
+    
