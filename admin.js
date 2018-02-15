@@ -16,7 +16,7 @@ async function csvhandler(req, res) {
 
   const data = [['name', 'email', 'ssn', 'count']];
   result.forEach((e) => {
-    data.push([e.id,e.name, e.email, e.ssn, e.count,e.date]);
+    data.push([e.id, e.name, e.email, e.ssn, e.count, e.date]);
   });
   res.setHeader('Content-Disposition', 'attachment; filename=data.csv');
   res.csv(data);
