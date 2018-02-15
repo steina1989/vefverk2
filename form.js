@@ -50,7 +50,7 @@ router.post(
     } else {
       const sqlresult = await sql.insert(req.body);
       if (sqlresult === -1) {
-        errormessages = ['Villa varð í gagnagrunni', 'Mögulega er kennitala þegar til'];
+        errormessages = ['Villa varð í gagnagrunni'];
         res.render('form', {
           errormessages, list: req.body, user: res.locals.user, title,
         });

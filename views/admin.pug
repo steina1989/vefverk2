@@ -6,15 +6,19 @@ block content
 
         table 
             thead
-                tr: th Name 
+                tr: th Id
+                    th Name 
                     th Email
                     th SSN
                     th Count
+                    th Date
             tbody 
                 each row in list
                     tr
+                        td= row['id']
                         td= row['name']
                         td= row['email']
                         td= row['ssn']
                         td= row['count']
+                        td= row['date']
     
