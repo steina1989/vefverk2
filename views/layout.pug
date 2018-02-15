@@ -6,17 +6,18 @@ html(lang="is")
     title=title
 
   body
-    ul
-      if user
-        li
-          a(href='logout') Útskráning
-        li
-          a(href='admin') Stjórnsíða
-        li 
-          a(href='/') Heim
-        li.text
-          p Skráð inn sem #{user.name}
-      else
-        li
-          a(href="/login") Log in
     block content
+    footer
+      ul
+        if user
+          li
+            a(href='logout') Útskráning
+          li
+            a(href='admin') Stjórnsíða
+          li 
+            a(href='/') Heim
+          li.text
+            p Skráð inn sem #{user.name}
+        else
+          li
+            a(href="/login") Log in
