@@ -8,15 +8,14 @@ const xss = require('xss');  // eslint-disable-line
 
 router.use(express.urlencoded({ extended: true }));
 
-
 function form(req, res) {
   const details = {
     name: '',
     email: '',
     ssn: '',
     count: 1,
-  };
-  res.render('form', { details, user: res.locals.user });
+  }; //eslint-disable-line
+  res.render('form', { list: details, user: res.locals.user });
 }
 
 router.get('/', form);
@@ -30,31 +29,32 @@ router.post(
   check('ssn').matches(/^[0-9]{6}-?[0-9]{4}$/).withMessage('Kennitala verður að vera á formi 000000-0000'),
   check('count').isInt({ min: 1 }).withMessage('Fjöldi verður að vera stærri en 0.'),
 
-  async(req, res) => {
+  async (req, res) => {
     const title = 'Forsíða';
-    const {
-      name = '',
-      email = '',
-      ssn = '',
-      count = 1,
-    } = req.body;
+    const { //eslint-disable-line
+      name = '', //eslint-disable-line
+      email = '', //eslint-disable-line
+      ssn = '', //eslint-disable-line
+      count = 1, //eslint-disable-line
+    } = req.body; //eslint-disable-line
 
     const errors = validationResult(req);
-    var sqlresult;
+    let errormessages = errors.array().map(value => value.msg);
 
-    var errormessages = errors.array().map(value => value.msg);
-    const details = req.body;
+    Object.keys(req.body).map(key => req.body[key] = xss(req.body[key]));
 
     if (!errors.isEmpty()) {
-      res.render('form', { errormessages, details, user: res.locals.user,title });
+      res.render('form', {
+        errormessages, list: req.body, user: res.locals.user, title,
+      });
     } else {
-      const list = [req.body.name, req.body.email, req.body.ssn, req.body.count].map(e => xss(e))      ;
-      sqlresult = await sql.insert(list);
-      if (sqlresult === -1){
-        errormessages = ['Villa varð í gagnagrunni', 'Mögulega er kennitala þegar til']
-        res.render('form', { errormessages, details, user: res.locals.user,title });
-      }
-      else{
+      const sqlresult = await sql.insert(req.body);
+      if (sqlresult === -1) {
+        errormessages = ['Villa varð í gagnagrunni', 'Mögulega er kennitala þegar til'];
+        res.render('form', {
+          errormessages, list: req.body, user: res.locals.user, title,
+        });
+      } else {
         res.render('formsuccess');
       }
     }

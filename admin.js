@@ -1,12 +1,7 @@
 const express = require('express');
 const csv = require('express-csv'); // eslint-disable-line
-//const cookieParser = require('cookie-parser');
-const { Strategy } = require('passport-local');
-
 const router = express.Router();
 const sql = require('./sql');
-const users = require('./users');
-
 
 function ensureLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -15,10 +10,6 @@ function ensureLoggedIn(req, res, next) {
 
   return res.redirect('/login');
 }
-
-router.get('/', ensureLoggedIn, admin);
-router.get('/csv', ensureLoggedIn, csvhandler);
-
 
 async function csvhandler(req, res) {
   const result = await sql.select().catch(e => console.error(e));
@@ -35,5 +26,8 @@ async function admin(req, res) {
   const list = await sql.select().catch(e => console.error(e));
   res.render('admin', { list, user: res.locals.user, title: 'Admin' });
 }
+
+router.get('/', ensureLoggedIn, admin);
+router.get('/csv', ensureLoggedIn, csvhandler);
 
 module.exports = router;

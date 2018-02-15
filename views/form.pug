@@ -8,16 +8,16 @@ block content
     form(method='POST' action='/post')
       div.form
         label(for='name') Nafn:
-        input(type='text', placeholder="Name", name='name',required='true',value=details.name)
+        input(type='text', placeholder="Name", name='name',required='true',value=list['name'])
       div.form
         label(for='email') Tölvupóstur:
-        input(type='email', placeholder='name@email.com', name='email', required='true',value=details.email) 
+        input(type='email', placeholder='name@email.com', name='email', required='true',value=list['email']) 
       div.form
         label(for='ssn') Kennitala:
-        input(type='text', placeholder='112233-4455', name='ssn',required='true',value=details.ssn)
+        input(type='text', placeholder='112233-4455', name='ssn',required='true',value=list['ssn'])
       div.form
         label(for='count') Fjöldi:
-        input(type='number' name='count', required='true',value=details.count)
+        input(type='number' name='count', required='true',value=list['count'])
 
       button(type='submit') Senda
 
