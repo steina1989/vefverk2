@@ -3,7 +3,7 @@ const { Client } = require('pg');
 
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:123@localhost/postgres';
 
-async function insert(values) {
+async function insert(values) { // eslint-disable-line
   const client = new Client({ connectionString });
   client.connect();
 
@@ -17,7 +17,7 @@ async function insert(values) {
   await client.end();
 }
 
-async function select() {
+async function select() { // eslint-disable-line
   const client = new Client({ connectionString });
   client.connect();
   try {

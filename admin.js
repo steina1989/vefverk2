@@ -14,7 +14,7 @@ function ensureLoggedIn(req, res, next) {
 async function csvhandler(req, res) {
   const result = await sql.select().catch(e => console.error(e));
 
-  const data = [['id','name', 'email', 'ssn', 'count','date']];
+  const data = [['id', 'name', 'email', 'ssn', 'count', 'date']];
   result.forEach((e) => {
     data.push([e.id, e.name, e.email, e.ssn, e.count, e.date]);
   });

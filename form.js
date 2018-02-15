@@ -41,7 +41,7 @@ router.post(
     const errors = validationResult(req);
     let errormessages = errors.array().map(value => value.msg);
 
-    Object.keys(req.body).map(key => req.body[key] = xss(req.body[key]));
+    Object.keys(req.body).map(key => req.body[key] = xss(req.body[key])); // eslint-disable-line
 
     if (!errors.isEmpty()) {
       res.render('form', {
