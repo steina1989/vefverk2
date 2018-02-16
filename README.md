@@ -1,6 +1,6 @@
-#Verkefni þetta má sjá í keyrslu á [heroku](https://afternoon-escarpment-90065.herokuapp.com/)
+# Verkefni þetta má sjá í keyrslu á [heroku](https://afternoon-escarpment-90065.herokuapp.com/)
 
-#Verkefni 2
+# Verkefni 2
 
 
 Útfæra skal Express vefþjón sem birtir skráningar form og hefur „stjórnsíðu“ þar sem hægt er að skoða allar skráningar.
